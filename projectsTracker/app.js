@@ -97,34 +97,52 @@ router.get('/allRecords/update/:id', function(req, res) { //must be router.get o
 });
 
 //POST Router this contains the route to proform the update function
-router.post('/addProject/updatesInfo', function(req, res, next) {
-    let sqlQuery = "UPDATE projects SET project_title ='" + req.body.proj_name + 
-                "', project_description ='" + req.body.proj_dets + 
-                "', project_start_dt ='" +  req.body.assigned_date + 
-                "', project_due_dt ='" + req.body.due_date + 
-                "' WHERE id = " + req.body.id;
-    conn.query(sqlQuery, function(err,rows){
-    if(err) throw err;
+// router.post('/addProject/updatesInfo', function(req, res, next) {
+//     let sqlQuery = "UPDATE projects SET project_title ='" + req.body.proj_name + 
+//                 "', project_description ='" + req.body.proj_dets + 
+//                 "', project_start_dt ='" +  req.body.assigned_date + 
+//                 "', project_due_dt ='" + req.body.due_date + 
+//                 "' WHERE id = " + req.body.id;
+//     conn.query(sqlQuery, function(err, row){
+//     if(err) throw err;
 
-    console.log(err);
-    res.redirect('/existing_Recs');   // has to be the exact name of the path to work
-    next();                
-    });
+//     console.log(err);
+//     res.redirect('/existing_Recs');   // has to be the exact name of the path to work
+//     next();                
+//     });
 
-});
+// });
 
 
 //the delete routes for students
  router.get('/allRecords/delete/:id', function(req, res, next){
-     conn.query('DELETE FROM projects WHERE is=' + req.params.id, function(err, row){
-         if(err) {
+     conn.query('DELETE FROM projects WHERE id =' + req.params.id, function(err, row){
+         if(err)  throw err;
          //req.flash('error', err); //must install additionals 'flash messages and others from to do list for these to work;
-         throw err
-         } else {
+
         //req.flash('success', 'Deleted Successfully') ///must install additionals 'flash messages and others from to do list for these to work;
              alert('Delete Successful');
              res.redirect('/existing_Recs');
              next();
-         }
      });
  });
+
+
+//  testing another update method
+
+app.post('/addProject/:id/updatesInfo',(req, res) => {
+    const id = req.params.id;
+    // var assigned_date = new Date(assigned_date).toLocaleDateString('fr-CA');
+    // var due_date = new Date(due_date).toLocaleDateString('fr-CA');
+    // let sql = "update nodeexpresscrud.projects SET title='"+req.body.title+"',  f_name='"+req.body.f_name+"',  l_name='"+req.body.l_name+"' where id ="+id;
+    let sqlQuery = "UPDATE nodeexpresscrud.projects SET project_title ='" + req.body.proj_name + 
+                "', project_description ='" + req.body.proj_dets + 
+                "', project_start_dt ='" +  req.body.assigned_date + 
+                "', project_due_dt ='" + req.body.due_date + 
+                "' WHERE id = " + req.body.id;
+    let query = conn.query(sqlQuery,(err, results) => {
+      if(err) throw err;
+      console.log(err)
+      res.redirect('/existing_Recs');
+    });
+});

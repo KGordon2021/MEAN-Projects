@@ -32,7 +32,7 @@
                 <td><%= new Date(data[i].project_due_dt).toLocaleDateString() %></td>
                 <td>
                     <a href="/allRecords/update/<%=data[i].id%>">Update</a> <!--this refers to the index of the current data collection which is currently stored as data-->
-                    <a href="">Remove</a>
+                    <a href="/allRecords/delete/<%=data[i].id%>">Remove</a>
                 </td>
                 
             </tr>

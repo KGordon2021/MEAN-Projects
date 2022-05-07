@@ -10,7 +10,7 @@
     <%- include('../partials/nav.ejs'); %>
 
     <h1>Update Records</h1>
-    <form name="editForm" action="/addProject/updatesInfo" method="post">
+    <form action="/addProject/:id/updatesInfo" method="post">
         <div>
             <h2><%= updatedInfo[0].project_title %></h2>
         </div>
@@ -26,8 +26,8 @@
             <input type="text" name="proj_dets" for="proj_name" value="<%= updatedInfo[0].project_description %>" style="width: 50%; height: 100px;">
         </div>
         <div class="dates">
-            <input type="text" name="assigned_date" value="<%= new Date(updatedInfo[0].project_start_dt).toLocaleDateString() %>">
-            <input type="text"  name="due_date" value="<%= new Date(updatedInfo[0].project_due_dt).toLocaleDateString() %>">
+            <input type="text" name="assigned_date" value="<%= new Date(updatedInfo[0].project_start_dt).toLocaleDateString('fr-CA') %>">
+            <input type="text"  name="due_date" value="<%= new Date(updatedInfo[0].project_due_dt).toLocaleDateString('fr-CA') %>">
         </div>
         <div>
             <input type="submit" value="Make Adjustments">
