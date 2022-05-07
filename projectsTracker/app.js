@@ -112,3 +112,19 @@ router.post('/addProject/updatesInfo', function(req, res, next) {
     });
 
 });
+
+
+//the delete routes for students
+ router.get('/allRecords/delete/:id', function(req, res, next){
+     conn.query('DELETE FROM projects WHERE is=' + req.params.id, function(err, row){
+         if(err) {
+         //req.flash('error', err); //must install additionals 'flash messages and others from to do list for these to work;
+         throw err
+         } else {
+        //req.flash('success', 'Deleted Successfully') ///must install additionals 'flash messages and others from to do list for these to work;
+             alert('Delete Successful');
+             res.redirect('/existing_Recs');
+             next();
+         }
+     });
+ });
