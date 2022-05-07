@@ -26,8 +26,8 @@
             <input type="text" name="proj_dets" for="proj_name" value="<%= updatedInfo[0].project_description %>" style="width: 50%; height: 100px;">
         </div>
         <div class="dates">
-            <input type="text" name="assigned_date" value="<%= new Date(updatedInfo[0].project_start_dt).toLocaleDateString('fr-CA') %>">
-            <input type="text"  name="due_date" value="<%= new Date(updatedInfo[0].project_due_dt).toLocaleDateString('fr-CA') %>">
+            <input type="date" name="assigned_date" value="<%= new Date(updatedInfo[0].project_start_dt).toLocaleDateString('fr-CA') %>">
+            <input type="date"  name="due_date" value="<%= new Date(updatedInfo[0].project_due_dt).toLocaleDateString('fr-CA') %>">
         </div>
         <div>
             <input type="submit" value="Make Adjustments">

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <table>
+        <thead>
+            <tr>
+                <th>Notes Id #</th>
+                <th>Project Title</th>
+                <th>Notes Description</th>
+                <th>Active Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <% if(notes.length) {
+                for(var i = 0; i < notes.length; i++) { 
+            %>
+            <tr>
+                <td><%= notes[i].project_id %></td>
+                <td><%= notes[i].proj_title %></td>
+                <td><%= notes[i].note %></td>
+                <td><%= new Date(notes[i].active_date).toLocaleDateString() %></td>
+                <td>
+                    <a href="/editNotes/update/<%=notes[i].project_id%>">Update</a> <!--this refers to the index of the current notes collection which is currently stored as notes-->
+                    <a href="/allRecords/delete/<%=notes[i].id%>">Remove</a>
+                </td>
+                
+            </tr>
+               <% }
+          }else{ %>
+            <tr>
+                <td>No students</td>
+            </tr>
+           <% } %>
+        </tbody>
+        
+    </table>
+</body>
+</html>

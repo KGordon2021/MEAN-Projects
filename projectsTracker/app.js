@@ -128,13 +128,62 @@ router.get('/allRecords/update/:id', function(req, res) { //must be router.get o
  });
 
 
-//  testing another update method
+//  testing another update method this once works
 
 app.post('/addProject/:id/updatesInfo',(req, res) => {
     const id = req.params.id;
     // var assigned_date = new Date(assigned_date).toLocaleDateString('fr-CA');
     // var due_date = new Date(due_date).toLocaleDateString('fr-CA');
     // let sql = "update nodeexpresscrud.projects SET title='"+req.body.title+"',  f_name='"+req.body.f_name+"',  l_name='"+req.body.l_name+"' where id ="+id;
+    let sqlQuery = "UPDATE nodeexpresscrud.projects SET project_title ='" + req.body.proj_name + 
+                "', project_description ='" + req.body.proj_dets + 
+                "', project_start_dt ='" +  req.body.assigned_date + 
+                "', project_due_dt ='" + req.body.due_date + 
+                "' WHERE id = " + req.body.id;
+    let query = conn.query(sqlQuery,(err, results) => {
+      if(err) throw err;
+      console.log(err)
+      res.redirect('/existing_Recs');
+    });
+});
+
+
+//NOTES SECTION
+
+
+router.get('/all_NOtes', function(req, res, next) { //route has to be declared once
+    conn.query('SELECT * FROM nodeexpresscrud.notes',function(err, rows){
+           if(err){
+               res.render('notes/allNotes', // was in incorrect file path allRecords
+               {notes:''});   
+           }else{
+               res.render('notes/allNotes', 
+               {notes: rows});
+           }                          
+            });
+       });
+
+
+//FOR NOTES EDITS
+router.get('/editNotes/update/:id', function(req, res) { //must be router.get or app.get or whatever else i choose but it has to be a get http verb
+    conn.query('SELECT * FROM notes WHERE id=' + req.params.id, function(err,row){
+        if(err) {
+            res.render('notes/editNotes', {updatingNotes:''})
+            // throw err,
+            // console.log(err);
+        } else {
+            res.render('notes/editNotes', {updatingNotes:row});
+        }
+    });
+});
+
+
+
+//Posting Notes to the database
+
+
+app.post('/all/:id/updatesInfo',(req, res) => {
+    const id = req.params.id;
     let sqlQuery = "UPDATE nodeexpresscrud.projects SET project_title ='" + req.body.proj_name + 
                 "', project_description ='" + req.body.proj_dets + 
                 "', project_start_dt ='" +  req.body.assigned_date + 
