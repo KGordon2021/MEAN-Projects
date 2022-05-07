@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <table>
+        <thead>
+            <tr>
+                <th>Project Id #</th>
+                <th>Project Title</th>
+                <th>Project Description</th>
+                <th>Start Date Assigned</th>
+                <th>Due date Assigned</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <% if(data.length) {
+                for(var i = 0; i < data.length; i++) { 
+            %>
+            <tr>
+                <td><%= data[i].id %></td>
+                <td><%= data[i].project_title %></td>
+                <td><%= data[i].project_description %></td>
+                <td><%= new Date(data[i].project_start_dt).toLocaleDateString() %></td>
+                <td><%= new Date(data[i].project_due_dt).toLocaleDateString() %></td>
+                <td>
+                    <a href="/allRecords/update/<%=data[i].id%>">Update</a> <!--this refers to the index of the current data collection which is currently stored as data-->
+                    <a href="">Remove</a>
+                </td>
+                
+            </tr>
+               <% }
+          }else{ %>
+            <tr>
+                <td>No students</td>
+            </tr>
+           <% } %>
+        </tbody>
+        
+    </table>
+</body>
+</html>

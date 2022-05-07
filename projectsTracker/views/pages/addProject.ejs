@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <%- include('../partials/nav.ejs'); %>
+
+    <form action="/addProject/add" method="post">
+        <h1>Add New Project</h1>
+        <div class="titled">
+            <label for="title">Project Title</label>
+            <input type="text" name="proj_title">
+        </div>
+        <div class="details">
+            <label for="dets">Description of Project</label>
+            <textarea name="dets" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div class="date_recieved">
+            <label for="rec_date">
+                <input type="date" name="rec_date" id="">
+            </label>
+        </div>
+        <div class="date_complted">
+            <label for="comp_date">
+                <input type="date" name="comp_date" id="">
+            </label>
+        </div>
+        <div class="sent">
+            <input type="submit" value="Add New Record">
+        </div>
+    </form>
+</body>
+</html>
