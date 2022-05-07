@@ -164,7 +164,26 @@ router.get('/all_NOtes', function(req, res, next) { //route has to be declared o
        });
 
 
-//FOR NOTES EDITS
+//ADD NEW NOTES
+// app.post('/AllNotes/add' , (req, res) => {
+//     let data = {    project_id:     req.body.proj_title, 
+//                     proj_title: req.body.dets, 
+//                     note: req.body.rec_date, 
+//                     active_date: req.body.comp_date,
+//                 };
+
+//         let sqlQuery = "INSERT INTO Projects SET ?";
+//     //  let sqlQuery = "INSERT INTO students (frst_nm, last_nm, email_addr, cohort) VALUES ('"+ req.body.first_name +"', '" + req.body.last_name + "', '"+ req.body.email_address + "','" + req.body.cohort_number +  "') ";
+    
+//         let vQuery = conn.query(sqlQuery, data,(err, results) => {
+//         if(err) throw err;
+//         res.send(JSONResponse(results));
+//         });
+//     }); 
+
+
+
+//FOR NOTES EDITS Page 
 router.get('/editNotes/update/:id', function(req, res) { //must be router.get or app.get or whatever else i choose but it has to be a get http verb
     conn.query('SELECT * FROM notes WHERE id=' + req.params.id, function(err,row){
         if(err) {
@@ -182,16 +201,15 @@ router.get('/editNotes/update/:id', function(req, res) { //must be router.get or
 //Posting Notes to the database
 
 
-app.post('/all/:id/updatesInfo',(req, res) => {
+app.post('/allNotes/:id/updateNotes',(req, res) => {
     const id = req.params.id;
-    let sqlQuery = "UPDATE nodeexpresscrud.projects SET project_title ='" + req.body.proj_name + 
-                "', project_description ='" + req.body.proj_dets + 
-                "', project_start_dt ='" +  req.body.assigned_date + 
-                "', project_due_dt ='" + req.body.due_date + 
-                "' WHERE id = " + req.body.id;
+    let sqlQuery = "UPDATE nodeexpresscrud.notes SET active_date ='" + req.body.dated + 
+                // "', proj_title ='" + req.body.proj_t + 
+                "', note ='" +  req.body.noted + 
+                "' WHERE project_id = " + req.body.id;
     let query = conn.query(sqlQuery,(err, results) => {
       if(err) throw err;
       console.log(err)
-      res.redirect('/existing_Recs');
+      res.redirect('/all_NOtes');
     });
 });
