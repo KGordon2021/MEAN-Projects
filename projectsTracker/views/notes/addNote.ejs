@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css.css" href="/projectsTracker/public/styles.css">
     <title>Document</title>
     <style>
         *{
@@ -114,8 +115,6 @@
 
 .addProjectsCon2 .form form input[type='text'] {
     width: 240px;
-    word-wrap: break-word;
-
 }
 
 .addProjectsCon2 .form form input[type='submit'] {
@@ -140,41 +139,35 @@
         <%- include('../partials/nav.ejs') %>
     </div>
 
+
     <div class="addProjectsCon2">
         <div class="imgBx">
-            <img src="https://i1.wp.com/palaemonsystems.com/wp-content/uploads/2021/07/Project-Management.png?fit=582%2C379&ssl=1" alt="">
+            <img src="https://assets.materialup.com/uploads/4554dde7-42b0-46e8-a8f6-0f112ff4ce34/preview.jpg" alt="">
         </div>
-        <div class="form">
-
-            <form action="/addProject/:id/updatesInfo" method="post">
          
-                <h1>Update Records</h1>
-        
-                <input type="hidden" name="id" value="<%= updatedInfo[0].id %>">
-                <div>
-                    <label for="proj_name">Project Name</label>
-                    <br>
-                    <input type="text" name="proj_name" for="proj_name" value="<%= updatedInfo[0].project_title%>">
-                </div>
-        
-                <div>
-                    <label for="proj_name">Description of Project</label>
-                    <br>
-                    <input type="text" name="proj_dets" for="proj_name" value="<%= updatedInfo[0].project_description %>">
-                </div>
-                <div class="dates">
-                    <input type="date" name="assigned_date" value="<%= new Date(updatedInfo[0].project_start_dt).toLocaleDateString('fr-CA') %>">
-                    <input type="date"  name="due_date" value="<%= new Date(updatedInfo[0].project_due_dt).toLocaleDateString('fr-CA') %>">
-                </div>
-                <div>
-                    <input type="submit" value="Make Adjustments">
-                </div>
-            </form>
-
+        <div class="form">
+            <form action="/addNewNotes" method="post">
+                <h1>Add New Note</h1>
+            
+                    <div>
+                        <label for="">Project Id</label>
+                        <input type="number" name="id">
+                    </div>
+                    <div class="newNote">
+                        <label for="">Note</label>
+                        <input type="text" name="newNotes">
+                    </div>
+            
+                    <div class="date">
+                        <input type="date" name="noteDate" id="">
+                    </div>
+                    <div class="add">
+                        <input type="submit" value="Add New Note">
+                    </div>
+                </form>
         </div>
     </div>
-
     
-
+  
 </body>
 </html>

@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/styles.css">
     <title>Document</title>
 </head>
 <body>
-    <%- include('../partials/nav.ejs') %>
+    <div class="pages">
+        <%- include('../partials/nav.ejs') %>
+    </div>
+
+    <div class="tables">
     <table>
         <thead>
             <tr>
@@ -25,14 +30,15 @@
                 for(var i = 0; i < data.length; i++) { 
             %>
             <tr>
-                <td><%= data[i].id %></td>
+                <td class="centered"><%= data[i].id %></td>
                 <td><%= data[i].project_title %></td>
-                <td><%= data[i].project_description %></td>
+                <td class="brk"><%= data[i].project_description %></td>
                 <td><%= new Date(data[i].project_start_dt).toLocaleDateString() %></td>
                 <td><%= new Date(data[i].project_due_dt).toLocaleDateString() %></td>
-                <td>
-                    <a href="/allRecords/update/<%=data[i].id%>">Update</a> <!--this refers to the index of the current data collection which is currently stored as data-->
-                    <a href="/allRecords/delete/<%=data[i].id%>">Remove</a>
+                <td class="centered">
+                    <a class="light" href="/allRecords/update/<%=data[i].id%>">Update</a> <!--this refers to the index of the current data collection which is currently stored as data-->
+                    <a class="warn" href="/allRecords/delete/<%=data[i].id%>">Remove</a>
+                    <a class="add" href="/addNotes/newNote/<%=data[i].id%>" style="margin-right: 10px;">Add Note</a>
                 </td>
                 
             </tr>
@@ -45,5 +51,6 @@
         </tbody>
         
     </table>
+    </div>
 </body>
 </html>

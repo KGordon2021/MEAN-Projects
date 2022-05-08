@@ -4,28 +4,165 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="public/styles.css"> -->
     <title>Document</title>
+    <style>
+    /*global styles for pages*/
+    .pages {
+        width: 80%;
+        border: 2px solid rgb(255, 51, 212, 0.2);
+        margin-top: 10px;
+        margin-left: 150px;
+        border-radius: 5px;
+        z-index: 999;
+    
+    }
+    
+    .pages nav {
+      display: flex;
+      background-color: rgb(212, 51, 212, 0.2);
+      width: 100%;
+      padding: 10px 20px;
+    }
+    
+    .pages nav a {
+        /* border: 1px solid #fff; */
+        text-decoration: none;
+        padding: 5px 8px;
+        border-left: 2px solid rgb(255, 51, 212, 0.2);
+        margin-right: 5px;
+        transition: all ease-in-out 0.8s;
+        cursor: pointer;
+    }
+    
+    .pages nav a:hover {
+        background: #fff;
+        border-left: 2px solid rgb(255, 51, 212, 0.8);
+        border-radius: 2px;
+    
+    }
+    
+    .pages nav .last {
+        margin-left: auto;
+    }  
+    
+    
+    .addProjectsCon2 {
+        display: flex;
+        margin: 0px 100px 0px 100px;
+        /* border: 2px solid red; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* justify-content: space-evenly; */
+        /* width: 100%; */
+    }
+    
+    
+    .addProjectsCon2 .imgBx {
+        width: 50%;
+        height: 100%;
+        /* border: 2px solid red; */
+    
+    }
+    
+    .addProjectsCon2 .imgBx img{
+        width: 100%;
+        height: 100%;
+    
+    }
+    
+    .addProjectsCon2 .form {
+        width: 50%;
+        margin-top: 100px;
+        /* border: 2px solid red; */
+        /* padding-left: 50px; */
+    
+    }
+    
+    .addProjectsCon2 .form form {
+        border: 10px solid rgba(79, 5, 63, 0.8);
+        width: 450px;
+        text-align: center;
+        padding: 20px;
+        margin-top: 2px;
+        /* height: 100%; */
+        
+    }
+    
+    .addProjectsCon2 .form form h1 {
+        font-size: 50px ;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    
+    .addProjectsCon2 .form form label{
+        padding: 20px 0px;
+        font-size: 18px;
+        /* color: red */
+    }
+    
+    .addProjectsCon2 .form form input{
+        margin: 15px 0px;
+        border: 1px solid silver ;
+        border-bottom: 3px solid rgba(79, 5, 63, 0.8);
+        padding: 5px 8px;
+    }
+    
+    .addProjectsCon2 .form form input[type='text'] {
+        width: 240px;
+        word-wrap: break-word;
+    
+    }
+    
+    .addProjectsCon2 .form form input[type='submit'] {
+        border: none;
+        outline: none;
+        background: rgba(79, 5, 63, 0.8);
+        width: 150px;
+        color: white;
+        padding: 5px 8px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all ease-in-out 0.8s;
+    }
+    
+    .addProjectsCon2 .form form input[type='submit']:hover {
+        background: rgb(79, 5, 63);
+    }
+        </style>
+
 </head>
 <body>
 
-    <%- include('../partials/nav.ejs') %>
-
-    <form action="/allNotes/:id/updateNotes" method="post">
-    <h1><%= updatingNotes[0].proj_title%></h1>
-    <input type="hidden" name="id" id="" value="<%= updatingNotes[0].project_id%>">
-
-    <div>
-        <label for="">Notes</label>
-        <input type="text" name="noted" for="" value="<%= updatingNotes[0].note %>">
+    <div class="pages">
+        <%- include('../partials/nav.ejs') %>
     </div>
 
-    <div>
-        <label for="">Active Date</label>
-        <input type="datet" name="dated" for="" value="<%= new Date(updatingNotes[0].active_date).toLocaleDateString('fr-CA')%>">
+    <div class="addProjectsCon2">
+        <div class="imgBx">
+            <img src="https://static.vecteezy.com/system/resources/previews/002/111/176/original/multitasking-project-manager-concept-vector.jpg" alt="">
+        </div>
+        <div class="form">
+            <form action="/allNotes/:id/updateNotes" method="post">
+                <h1>Update Notes</h1>
+                <input type="hidden" name="id" id="" value="<%= updatingNotes[0].project_id%>">
+            
+                <div>
+                    <label for="">Notes</label>
+                    <input type="text" name="noted" for="" value="<%= updatingNotes[0].note %>">
+                </div>
+            
+                <div>
+                    <label for="">Active Date</label>
+                    <input type="datet" name="dated" for="" value="<%= new Date(updatingNotes[0].active_date).toLocaleDateString('fr-CA')%>">
+                </div>
+                <div>
+                    <input type="submit" id="" value="Update Notes">
+                </div>
+                </form>
+        </div>
     </div>
-    <div>
-        <input type="submit" id="" value="Update Notes">
-    </div>
-    </form>
+
+   
 </body>
 </html>

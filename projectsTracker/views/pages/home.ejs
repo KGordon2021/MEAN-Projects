@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/styles.css">
     <title>Document</title>
 </head>
 <body>
-    <%- include('../partials/nav.ejs'); %>
-
-    <h1>Hello from Home</h1>
+    <div class="homenav">
+        <%- include('../partials/nav.ejs'); %>
+    </div>
+    <div class="homelanding">
+        <div class="homeText">
+            <h1>Welcome Back To Your Project Planner Krisan</h1>
+        </div>
+        <div class="imgBx">
+            <img src="https://www.liquidplanner.com/wp-content/uploads/2020/10/the-future-of-project-management-liquidplanner-1.jpg" alt="">
+        </div>
+    </div>
+    
 </body>
 </html>

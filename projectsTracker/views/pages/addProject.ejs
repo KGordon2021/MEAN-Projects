@@ -4,35 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/styles.css">
     <title>Document</title>
 </head>
 <body>
     
-    <%- include('../partials/nav.ejs'); %>
+    <div class="pages">
+        <%- include('../partials/nav.ejs') %>
+    </div>
 
-    <form action="/addProject/add" method="post">
-        <h1>Add New Project</h1>
-        <div class="titled">
-            <label for="title">Project Title</label>
-            <input type="text" name="proj_title">
+    <div class="addProjectsCon">
+        <div class="imgBx">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-manager-making-presentation-2706756-2268246.png" alt="">
         </div>
-        <div class="details">
-            <label for="dets">Description of Project</label>
-            <textarea name="dets" id="" cols="30" rows="10"></textarea>
+        <div class="form">
+            <form action="/addProject/add" method="post">
+                <h1>Add New Project</h1>
+                
+                <div class="titled">
+                    <label for="title">Project Title</label>
+                    <br>
+                    <input type="text" name="proj_title">
+                </div>
+
+                <div class="details">
+                    <label for="dets">Description of Project</label>
+                    <br>
+                    <textarea name="dets" id="" cols="30" rows="2"></textarea>
+                </div>
+
+                <div class="date_recieved">
+                    <label for="rec_date">Date Project Recieved  </label>
+                    <br>
+                    <input type="date" name="rec_date" id="">
+                </div>
+                <div class="date_complted">
+                    <label for="comp_date">Project Deadline</label><br> 
+                    <input type="date" name="comp_date" id="">
+                </div>
+                <div class="sent">
+                    <input type="submit" value="Add New Record">
+                </div>
+            </form>
         </div>
-        <div class="date_recieved">
-            <label for="rec_date">
-                <input type="date" name="rec_date" id="">
-            </label>
-        </div>
-        <div class="date_complted">
-            <label for="comp_date">
-                <input type="date" name="comp_date" id="">
-            </label>
-        </div>
-        <div class="sent">
-            <input type="submit" value="Add New Record">
-        </div>
-    </form>
+    </div>
+    
 </body>
 </html>

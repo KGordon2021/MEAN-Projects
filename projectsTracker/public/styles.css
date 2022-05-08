@@ -1,0 +1,268 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*global styles for pages*/
+.pages {
+    width: 80%;
+    border: 2px solid rgb(255, 51, 212, 0.2);
+    margin-top: 10px;
+    margin-left: 150px;
+    border-radius: 5px;
+    z-index: 999;
+
+}
+
+.pages nav {
+  display: flex;
+  background-color: rgb(212, 51, 212, 0.2);
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.pages nav a {
+    /* border: 1px solid #fff; */
+    text-decoration: none;
+    padding: 5px 8px;
+    border-left: 2px solid rgb(255, 51, 212, 0.2);
+    margin-right: 5px;
+    transition: all ease-in-out 0.8s;
+    cursor: pointer;
+}
+
+.pages nav a:hover {
+    background: #fff;
+    border-left: 2px solid rgb(255, 51, 212, 0.8);
+    border-radius: 2px;
+
+}
+
+.pages nav .last {
+    margin-left: auto;
+}
+
+
+/*home style*/
+.homenav {
+    width: 80%;
+    border: 2px solid rgb(255, 51, 212, 0.2);
+    margin-top: 30px;
+    margin-left: 150px;
+    position: absolute;
+    border-radius: 5px;
+
+}
+
+.homenav nav {
+  display: flex;
+  background-color: rgb(212, 51, 212, 0.2);
+  width: 100%;
+  z-index: 999;
+  padding: 10px 20px;
+}
+
+.homenav nav a {
+    /* border: 1px solid #fff; */
+    text-decoration: none;
+    padding: 5px 8px;
+    border-left: 2px solid rgb(255, 51, 212, 0.2);
+    margin-right: 5px;
+    transition: all ease-in-out 0.8s;
+    cursor: pointer;
+}
+
+.homenav nav a:hover {
+    background: #fff;
+    border-left: 2px solid rgb(255, 51, 212, 0.8);
+    border-radius: 2px;
+
+}
+
+.homenav nav .last {
+    margin-left: auto;
+}
+
+.homelanding {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.homelanding .homeText {
+    position: absolute;
+    border: 2px solid rgb(255, 51, 212, 0.2);
+    margin-top: 450px;
+    margin-left: 50px;
+    text-align: center;
+    width: 93%;
+    z-index: 1000;
+    padding: 20px 0px;
+    background: rgb(255, 51, 212, 0.4);
+    border-radius: 5px;
+}
+
+.homelanding .imgBx {
+    width: 100%;
+    height: 99vh;
+    /* border: 2px solid red; */
+    top: 0;
+}
+
+.homelanding .homeText h1  {
+    color: rgba(255,255,255,1);
+    font-size: 50px;
+    font-weight: 500;
+}
+
+
+.homelanding .imgBx img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*add projects html styles*/
+
+.addProjectsCon {
+    display: flex;
+    margin: 80px 100px 0px 100px;
+    /* border: 2px solid red; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* justify-content: space-evenly; */
+    /* width: 100%; */
+}
+
+.addProjectsCon .imgBx {
+    width: 50%;
+    height: 100%;
+    /* border: 2px solid red; */
+
+}
+
+.addProjectsCon .imgBx img{
+    width: 100%;
+    height: 100%;
+
+}
+
+.addProjectsCon .form {
+    width: 50%;
+    /* border: 2px solid red; */
+    /* padding-left: 50px; */
+
+}
+
+.addProjectsCon .form form {
+    border: 10px solid rgba(79, 5, 63, 0.8);
+    width: 450px;
+    text-align: center;
+    padding: 20px;
+    margin-top: 2px;
+    /* height: 100%; */
+    
+}
+
+.addProjectsCon .form form h1 {
+    font-size: 50px ;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.addProjectsCon .form form label{
+    padding: 20px 0px;
+    font-size: 18px;
+    /* color: red */
+}
+
+.addProjectsCon .form form input, .addProjectsCon .form form textarea{
+    margin: 15px 0px;
+    border: 1px solid silver ;
+    border-bottom: 3px solid rgba(79, 5, 63, 0.8);
+    padding: 5px 8px;
+}
+
+.addProjectsCon .form form input[type='text'] {
+    width: 240px;
+}
+
+.addProjectsCon .form form input[type='submit'] {
+    border: none;
+    outline: none;
+    background: rgba(79, 5, 63, 0.8);
+    width: 150px;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease-in-out 0.8s;
+}
+
+.addProjectsCon .form form input[type='submit']:hover {
+    background: rgb(79, 5, 63);
+}
+
+/*global style for tables*/
+
+.tables {
+    /* border: 2px solid red; */
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+.tables table {
+    padding: 20px;
+    border-collapse: collapse;
+}
+
+.tables table thead {
+    background: rgba(79, 5, 63, 0.8);
+    color: #fff;
+    border-radius: 5px;
+}
+
+.tables table thead th {
+    padding: 10px 5px;
+}
+
+.tables table tbody {
+    background-color: rgb(0, 0, 0, 0.1);
+}
+
+.tables table tbody td {
+    padding: 10px 0px;
+}
+
+.tables table tbody .brk {
+    word-wrap: break-word;
+    width: 300px;
+}
+
+.tables table tbody .centered {
+    text-align: center;
+}
+
+.tables table tbody .centered a{
+    text-decoration: none;
+    border: 1px solid silver;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    background: rgba(79, 5, 63, 0.8);
+    transition: all ease-in-out 0.8s;
+}
+
+.tables table tbody .centered a:hover {
+    background: rgb(79, 5, 63);
+}
+
+.table2 {
+    margin-top: 120px;
+}
+
+.pages2 {
+    background: blue;
+}

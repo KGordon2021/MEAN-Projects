@@ -96,24 +96,6 @@ router.get('/allRecords/update/:id', function(req, res) { //must be router.get o
     });
 });
 
-//POST Router this contains the route to proform the update function
-// router.post('/addProject/updatesInfo', function(req, res, next) {
-//     let sqlQuery = "UPDATE projects SET project_title ='" + req.body.proj_name + 
-//                 "', project_description ='" + req.body.proj_dets + 
-//                 "', project_start_dt ='" +  req.body.assigned_date + 
-//                 "', project_due_dt ='" + req.body.due_date + 
-//                 "' WHERE id = " + req.body.id;
-//     conn.query(sqlQuery, function(err, row){
-//     if(err) throw err;
-
-//     console.log(err);
-//     res.redirect('/existing_Recs');   // has to be the exact name of the path to work
-//     next();                
-//     });
-
-// });
-
-
 //the delete routes for students
  router.get('/allRecords/delete/:id', function(req, res, next){
      conn.query('DELETE FROM projects WHERE id =' + req.params.id, function(err, row){
@@ -163,23 +145,19 @@ router.get('/all_NOtes', function(req, res, next) { //route has to be declared o
             });
        });
 
+//get info fromprojects to the add notes page
 
-//ADD NEW NOTES
-// app.post('/AllNotes/add' , (req, res) => {
-//     let data = {    project_id:     req.body.proj_title, 
-//                     proj_title: req.body.dets, 
-//                     note: req.body.rec_date, 
-//                     active_date: req.body.comp_date,
-//                 };
-
-//         let sqlQuery = "INSERT INTO Projects SET ?";
-//     //  let sqlQuery = "INSERT INTO students (frst_nm, last_nm, email_addr, cohort) VALUES ('"+ req.body.first_name +"', '" + req.body.last_name + "', '"+ req.body.email_address + "','" + req.body.cohort_number +  "') ";
-    
-//         let vQuery = conn.query(sqlQuery, data,(err, results) => {
-//         if(err) throw err;
-//         res.send(JSONResponse(results));
-//         });
-//     }); 
+router.get('/addNotes/newNote/:id', function(req, res) { //must be router.get or app.get or whatever else i choose but it has to be a get http verb
+    conn.query('SELECT * FROM projects WHERE id=' + req.params.id, function(err,row){
+        if(err) {
+            res.render('notes/addNote', {projInfo:''})
+            // throw err,
+            // console.log(err);
+        } else {
+            res.render('notes/addNote', {projInfo:row});
+        }
+    });
+});
 
 
 
@@ -198,8 +176,7 @@ router.get('/editNotes/update/:id', function(req, res) { //must be router.get or
 
 
 
-//Posting Notes to the database
-
+//Updating Notes to the database
 
 app.post('/allNotes/:id/updateNotes',(req, res) => {
     const id = req.params.id;
@@ -213,3 +190,37 @@ app.post('/allNotes/:id/updateNotes',(req, res) => {
       res.redirect('/all_NOtes');
     });
 });
+
+
+//Detleting notes from list
+//the delete routes for students
+router.get('/allNotes/delete/:id', function(req, res, next){
+    conn.query('DELETE FROM notes WHERE project_id =' + req.params.id, function(err, row){
+        if(err)  throw err;
+        //req.flash('error', err); //must install additionals 'flash messages and others from to do list for these to work;
+
+       //req.flash('success', 'Deleted Successfully') ///must install additionals 'flash messages and others from to do list for these to work;
+            alert('Delete Successful');
+            res.redirect('/all_NOtes');
+            next();
+    });
+});
+
+//posts new notes to the notes table in db
+
+app.post('/addNewNotes' , (req, res) => {
+    let data = {    project_id: req.body.id, 
+                    note: req.body.newNotes,
+                    active_date: req.body.noteDate, 
+                };
+
+        let sqlQuery = "INSERT INTO notes SET ?";
+    //  let sqlQuery = "INSERT INTO students (frst_nm, last_nm, email_addr, cohort) VALUES ('"+ req.body.first_name +"', '" + req.body.last_name + "', '"+ req.body.email_address + "','" + req.body.cohort_number +  "') ";
+    
+        let vQuery = conn.query(sqlQuery, data,(err, results) => {
+        if(err) throw err;
+        res.send(JSONResponse(results));
+        });
+    }); 
+
+
