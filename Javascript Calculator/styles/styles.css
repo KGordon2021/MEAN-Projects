@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mainCon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.mainCon h1 {
+    font-size: 50px;
+    font-weight: 500;
+    padding-bottom: 10px;
+    color: darkblue
+    /* text-decoration: underline; */
+}
+
+.circleandRect, .simpleMath {
+    display: flex;
+    flex: row;
+    margin: 20px 0px
+}
+
+.mainCon h2 {
+    margin-top: 50px;
+    font-weight: 500;
+    color: darkblue;
+}
+
+.mainCon .result {
+    font-size: 28px;
+    font-weight: 500;
+    color: blueviolet;
+}
+
+.mainCon select, .mainCon input {
+    padding: 5px;
+    margin: 0px 8px;
+    border: 5px solid skyblue;
+    /* border-radius: 5px; */
+}
+
+.mainCon button {
+    background-color: aqua;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all ease-in 0.8s;
+    width: 150px;
+    color: white;
+}
+
+
+.mainCon button:hover {
+    background: rgb(19, 102, 134);
+    color: white;
+}
